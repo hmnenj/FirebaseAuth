@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,8 +7,9 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #EB460A, #00BBFA);
+    font-family: 'Poppins', sans-serif;
+    background: #EEAECA;
+    background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(228, 174, 238, 1) 50%, rgba(174, 209, 238, 1) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +18,7 @@ body {
 }
 
 .container {
-    background-color: #f2f1f140;
+    background-color: #fff;
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -26,13 +29,13 @@ body {
 
 .form-title {
     font-size: 1.8rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #333;
 }
 
 .input-group {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: left;
 }
 
@@ -46,7 +49,7 @@ body {
 }
 
 .input-group input:focus {
-    border-color: #1D6DCD;
+    border-color: #BA2DD2;
     outline: none;
 }
 
@@ -60,8 +63,8 @@ body {
     transition: all 0.3s;
 }
 
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
     top: -10px;
     left: 15px;
     font-size: 0.8rem;
@@ -79,7 +82,8 @@ body {
 }
 
 .btn {
-    background-color: #1D6DCD;
+    background: #EEAECA;
+    background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(228, 174, 238, 1) 50%);
     color: #fff;
     padding: 12px 20px;
     border: none;
@@ -92,7 +96,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #F1AF09;
+    background-color: #D378E2;
     transform: scale(1.05);
 }
 
@@ -102,14 +106,14 @@ body {
 
 .icons i {
     font-size: 1.5rem;
-    color: #1D6DCD;
+    color: #BA2DD2;
     margin: 0 10px;
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .icons i:hover {
-    color: #F1AF09;
+    color: #D378E2;
 }
 
 .links {
@@ -124,18 +128,18 @@ body {
 .links button {
     background: none;
     border: none;
-    color: #1D6DCD;
+    color: #BA2DD2;
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .links button:hover {
-    color: #F1AF09;
+    color: #D378E2;
 }
 
 .recover a {
-    color: #1D6DCD;
+    color: #BA2DD2;
     font-size: 0.9rem;
     text-decoration: none;
 }
@@ -146,7 +150,7 @@ body {
 
 .messageDiv {
     padding: 10px;
-    color: red;
+    color: #F5276C;
     font-size: 0.9rem;
 }
 

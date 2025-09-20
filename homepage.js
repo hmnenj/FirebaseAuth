@@ -12,7 +12,7 @@ const firebaseConfig = {
     messagingSenderId: "469709077977",
     appId: "1:469709077977:web:757fb9c556af9044b8edc8",
     measurementId: "G-Z069FHBLJR"
-  };
+};
 
 // Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
@@ -30,20 +30,20 @@ onAuthStateChanged(auth, (user) => {
         const docRef = doc(db, "users", loggedInUserId); //referência ao documento do usuário no firestore
 
         getDoc(docRef) //Busca o documento
-        .then((docSnap) => {
-            //se o documento existir, exibe os dados na interface
-            if (docSnap.exists()) {
-                const userData = docSnap.data();
-                document.getElementById('loggedUserFName').innerText = userData.firstName;
-                document.getElementById('loggedUserEmail').innerText = userData.email;
-                document.getElementById('loggedUserLName').innerText = userData.lastName;
-            } else {
-                console.log("ID não encontrado no Documento");
-            }
-        })
-        .catch((error) => {
-            console.log("documento não encontrado");
-        });
+            .then((docSnap) => {
+                //se o documento existir, exibe os dados na interface
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    document.getElementById('loggedUserFName').innerText = userData.firstName || "";
+                    document.getElementById('loggedUserLName').innerText = userData.lastName || "";
+                    document.getElementById('loggedUserEmail').innerText = userData.email || "";
+                } else {
+                    console.log("ID não encontrado no Documento");
+                }
+            })
+            .catch((error) => {
+                console.log("documento não encontrado");
+            });
     } else {
         console.log("ID de usuário não encontrado no localStorage");
     }
@@ -54,10 +54,10 @@ const logoutButton = document.getElementById('logout');
 logoutButton.addEventListener('click', () => {
     localStorage.removeItem('loggedInUserId'); //remove o ID do LocalStorage
     signOut(auth) //realiza logout
-    .then(() => {
-        window.location.href = 'index.html'; //redireciona para a página de login
-    })
-    .catch((error) => {
-        console.error('Error Signing out:', error);
-    });
+        .then(() => {
+            window.location.href = 'index.html'; //redireciona para a página de login
+        })
+        .catch((error) => {
+            console.error('Error Signing out:', error);
+        });
 });

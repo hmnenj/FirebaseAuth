@@ -37,7 +37,7 @@
             </div>
             <button type="button" class="btn" id="submitSignUp">Criar conta</button>
         </form>
-        <div class="icons">
+        <div class="icons" onclick="handleGoogleLogin()">
             <i class="fab fa-google"></i>
         </div>
         <div class="links">
@@ -67,7 +67,7 @@
             <button type="button" class="btn" id="submitSignIn">Entrar</button>
         </form>
         <div class="icons">
-            <i class="fab fa-google"></i>
+            <i class="fab fa-google" onclick="handleGoogleLogin()"></i>
         </div>
         <div class="links">
             <p>Não tem uma conta?</p>
@@ -75,6 +75,20 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script type="module">
+        import { signInWithGoogle } from "./firebaseauth.js";
+
+        window.handleGoogleLogin = async () => {
+            const user = await signInWithGoogle();
+            if (user) {
+                alert("Logado com Google ");
+                localStorage.setItem("loggedInUserId", user.uid);
+                window.location.href = "homepage.html";
+            } else {
+                alert("Erro ao logar com Google");
+            }
+        };
+    </script>
 </body>
 
 </html>
