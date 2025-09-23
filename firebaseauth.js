@@ -109,10 +109,24 @@ window.signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     try {
         const result = await signInWithPopup(auth, provider);
-        localStorage.setItem('loggedInUserId', result.user.uid);
-        window.location.href = 'homepage.html';
+        const user = result.user;
+
+        localStorage.setItem('loggedInUserId', user.uid);
+
+        const userData = {
+            email: user.email,
+            firstName: user.displayName ? user.displayName.split(" ")[0] : "",
+            lastName: user.displayName ? user.displayName.split(" ").slice(1).join(" ") : "",
+            photoURL: user.photoURL || null
+        };
+
+        const docRef = doc(db, "users", user.uid);
+        await setDoc(docRef, userData, { merge: true });
+
+        window.location.href = "homepage.html";
+
     } catch (error) {
         console.error("Erro no login com Google:", error);
         alert("Erro ao logar com Google");
     }
-}
+};

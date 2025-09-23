@@ -95,7 +95,7 @@ Firebase Authentication e armazenamento de dados de usuários no
 
 ------------------------------------------------------------------------
 
-## ✅ Conclusão
+## Conclusão
 
 Este projeto demonstra de forma simples como integrar Firebase
 Authentication em uma aplicação web, permitindo autenticação tanto por
