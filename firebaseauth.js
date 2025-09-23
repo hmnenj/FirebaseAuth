@@ -43,8 +43,8 @@ signUp.addEventListener('click', (event) => {
     const firstName = document.getElementById('fName').value;
     const lastName = document.getElementById('lName').value;
 
-    const auth = getAuth(); // Configura o serviço de autenticação
-    const db = getFirestore(); // Conecta ao Firestore
+    const auth = getAuth(app); // Configura o serviço de autenticação
+    const db = getFirestore(app); // Conecta ao Firestore
 
     // Cria uma conta com e-mail e senha
     createUserWithEmailAndPassword(auth, email, password)
@@ -105,33 +105,14 @@ signIn.addEventListener('click', (event) => {
         });
 });
 
-async function signInWithGoogle() {
+window.signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     try {
         const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-
-        let firstName = "";
-        let lastName = "";
-        if (user.displayName) {
-            const nameParts = user.displayName.split(" ");
-            firstName = nameParts[0];
-            lastName = nameParts.slice(1).join(" "); 
-        }
-
-        await setDoc(doc(db, "users", user.uid), {
-            email: user.email,
-            firstName: firstName,
-            lastName: lastName
-        }, { merge: true });
-
-        localStorage.setItem("loggedInUserId", user.uid);
-
-        return user;
+        localStorage.setItem('loggedInUserId', result.user.uid);
+        window.location.href = 'homepage.html';
     } catch (error) {
         console.error("Erro no login com Google:", error);
-        return null;
+        alert("Erro ao logar com Google");
     }
 }
-
-export { signInWithGoogle };

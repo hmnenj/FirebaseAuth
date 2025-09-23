@@ -16,8 +16,8 @@ const firebaseConfig = {
 
 // Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(); //configura o firebase authentication
-const db = getFirestore(); //configura o firestore
+const auth = getAuth(app); //configura o firebase authentication
+const db = getFirestore(app); //configura o firestore
 
 //monitora o estado de autenticação do usuário
 onAuthStateChanged(auth, (user) => {
